@@ -34,7 +34,7 @@ class Supply(models.Model):
 
     
     id = models.BigAutoField(verbose_name='شناسه محصول', primary_key=True)
-    image = models.ImageField(verbose_name='تصویر محصول', upload_to='media')
+    image = models.ImageField(verbose_name='تصویر محصول', upload_to='media', null=True)
     category = models.ManyToManyField(Category, verbose_name='دسته بندی', related_name='cat')
     title = models.CharField(max_length=100, verbose_name='نام محصول')
     status = models.CharField(max_length=1, verbose_name='وضعیت محصول', choices=STATUS_CHOICE)
