@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import html 
 
 #Managers
 class SupplyManager(models.Manager):
@@ -49,5 +50,8 @@ class Supply(models.Model):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
 
+
     def __str__(self):
          return self.title
+    
+
