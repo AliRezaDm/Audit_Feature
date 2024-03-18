@@ -1,6 +1,57 @@
 {% load static %}
 
 
+
+<!-- small containers -->
+<div class="container-fluid">
+  <div class="row">
+    {% for object in object_list%}  
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{object.title}}</span>
+            <span class="info-box-number">
+              تعداد 
+              <small>{{object.count}}</small>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+    
+      <!-- fix for small devices only -->
+      <div class="clearfix hidden-md-up"></div>
+    {% endfor %}  
+    
+  </div>
+</div>
+
+<!-- Big containers -->
+<div class="container-fluid">
+  <div class="row">
+    {% for object in object_list%}
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{object.count}}</h3>
+
+          <p>{{object.title}}</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a href="#" class="small-box-footer">نمایش بیشتر <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+<!-- Table -->
 <div class="card">
     <div class="card-header border-0">
       <h3 class="card-title">Products</h3>
