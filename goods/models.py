@@ -54,4 +54,8 @@ class Supply(models.Model):
     def __str__(self):
          return self.title
     
+    def image_tag(self):
+         return html.format_html("<img width=100; height=75; style='border-radius:10px;'src='{}'>".format(self.image.url))
+    image_tag.short_description = short_decsription = 'تصویر محصول'
+    
 

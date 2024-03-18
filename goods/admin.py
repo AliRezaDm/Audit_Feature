@@ -4,7 +4,7 @@ from .models import Supply, Category
 @admin.register(Supply)
 class SupplyAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'image','title', 'status', 'count')
+    list_display = ('id', 'image_tag','title', 'status', 'count')
     list_filter = (['id', 'status'])
     search_fields = ('id', 'title')
     ordering = ['id', 'count']
