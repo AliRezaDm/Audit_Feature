@@ -39,10 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # All Auth apps
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     #My Apps
     'goods.apps.GoodsConfig',
-    'account.apps.AccountConfig'
+    'accounts.apps.AccountsConfig', 
+
 ]
 
 MIDDLEWARE = [
@@ -53,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # All auth middleware
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -139,6 +147,26 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+ 
 
-AUTH_USER_MODEL = 'account.BaseUser'
+AUTH_USER_MODEL = 'accounts.BaseUser'
+
+
+LOGIN_REDIRECT_URL = 'goods:supply_list'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
+
+
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+
 
