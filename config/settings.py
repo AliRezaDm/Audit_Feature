@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #My Apps
-    'goods.apps.GoodsConfig'
+    'goods.apps.GoodsConfig',
+    'account.apps.AccountConfig'
 ]
 
 MIDDLEWARE = [
@@ -139,4 +140,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 
+AUTH_USER_MODEL = 'account.BaseUser'
 
