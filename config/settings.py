@@ -153,8 +153,8 @@ AUTH_USER_MODEL = 'accounts.BaseUser'
 
 
 LOGIN_REDIRECT_URL = 'goods:supply_list'
-LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'account_login'
+LOGOUT_REDIRECT_URL = 'account_login'
 
 
 

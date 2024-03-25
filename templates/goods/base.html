@@ -45,10 +45,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">خانه</a>
+        <a href="{% url 'goods:supply_list'%}" class="nav-link">خانه</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">دسته بندی ها</a>
+        <a href="{% url 'goods:category_list'%}" class="nav-link">دسته بندی ها</a>
       </li>
     </ul>
 
@@ -82,7 +82,7 @@
             <span class="float-right text-muted text-sm"></span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="{% url 'account_logout'%}" class="dropdown-item">
             <i class="fas fa-users mr-2"></i> خروج از حساب کابری
             <span class="float-right text-muted text-sm"></span>
           </a>
