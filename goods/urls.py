@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Supplylist, CategoryList, SupplyDetail, SupplyCreateView, CategoryCreateView
+from .views import Supplylist, CategoryList, SupplyDetail, SupplyCreateView, CategoryCreateView, SizeCreateView, ColorCreateView
 
 
 app_name = 'goods'
@@ -8,6 +8,8 @@ urlpatterns = [
     path('category/', CategoryList.as_view(), name='category_list'),
     path('detail/<id>', SupplyDetail.as_view(), name='supply_detail'), 
     path('create_supply/', SupplyCreateView.as_view(), name='supply_create'), 
-    path('create_category/', CategoryCreateView.as_view(), name='category_create' )
+    path('create_category/', CategoryCreateView.as_view(), name='category_create' ), 
+    path('create_color/', ColorCreateView.as_view(), name='color_create' ),
+    path('create_size/', SizeCreateView.as_view(), name='size_create' ),  
 ]
 
