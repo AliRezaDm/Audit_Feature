@@ -41,5 +41,5 @@ class CategoryList(ListView):
 class CategoryCreateView(CreateView):
 
     model = Category
-    fields = ['parent', 'title', 'status']
+    fields = ['parent', 'title', 'status', 'color', 'size']
     template_name = "goods/add_category_form.html"
