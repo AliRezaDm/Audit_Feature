@@ -28,7 +28,7 @@ class SupplyDetail(DetailView):
 class SupplyCreateView(CreateView):
 
     model = Supply
-    fields = ['title', 'category', 'count', 'image']
+    fields = ['title', 'category', 'count', 'image', 'color', 'size']
     template_name = 'goods/add_supply_form.html'
 
 
@@ -41,7 +41,7 @@ class CategoryList(ListView):
 class CategoryCreateView(CreateView):
 
     model = Category
-    fields = ['parent', 'title', 'status', 'color', 'size']
+    fields = ['parent', 'title', 'status']
     template_name = "goods/add_category_form.html"
 
 class SizeCreateView(CreateView):
