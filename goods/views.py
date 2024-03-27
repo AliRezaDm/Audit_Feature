@@ -4,7 +4,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Supply, Category
+from .models import Supply, Category, Size, Color
 
 
 
@@ -43,3 +43,15 @@ class CategoryCreateView(CreateView):
     model = Category
     fields = ['parent', 'title', 'status', 'color', 'size']
     template_name = "goods/add_category_form.html"
+
+class SizeCreateView(CreateView):
+
+    model = Size
+    fields = ['name']
+    template_name = "goods/add_size_form.html"
+
+class ColorCreateView(CreateView):
+
+    model = Color
+    fields = ['name']
+    template_name = "goods/add_color_form.html"
