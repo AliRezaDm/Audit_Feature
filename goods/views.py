@@ -3,6 +3,7 @@ from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Supply, Category
 
 
@@ -24,6 +25,12 @@ class SupplyDetail(DetailView):
         id = self.kwargs.get('id')
         return get_object_or_404(Supply.objects.Available(), pk=id)
    
+class SupplyCreateView(CreateView):
+
+    model = Supply
+    fields = ['title', 'category', 'count', 'image']
+    template_name = 'goods/add_supply_form.html'
+
 class CategoryList(ListView):
 
     model = Category
