@@ -31,8 +31,15 @@ class SupplyCreateView(CreateView):
     fields = ['title', 'category', 'count', 'image']
     template_name = 'goods/add_supply_form.html'
 
+
 class CategoryList(ListView):
 
     model = Category
     queryset = Category.objects.filter(status=True)
     template_name = "goods/category_list"
+
+class CategoryCreateView(CreateView):
+
+    model = Category
+    fields = ['parent', 'title', 'status']
+    template_name = "goods/add_category_form.html"
