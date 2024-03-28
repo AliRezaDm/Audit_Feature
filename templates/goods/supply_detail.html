@@ -2,6 +2,91 @@
 {% load static %}
 {% block content%}
 
-{{object.title}}
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>{{object.title}}</h1>
+        </div>
+        <div class="col-sm-6">
+    
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="content" style="float:right;">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fas fa-minus"></i></button>
+        </div>
+      </div>
+      <div class="card-body" style="display: block;">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+            <div class="row">
+              <div class="col-8 col-sm-6">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">شناسه</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.id}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-sm-6">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">دسته</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.category}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-sm-6">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">رنگ</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.color}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-sm-6">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">سایز</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.size}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-sm-6">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">تعداد</span>
+                    <span class="info-box-number text-center text-muted mb-0">{{object.count}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12">
+                <div class="info-box bg-light">
+                  <div class="info-box-content">
+                    <span class="info-box-text text-center text-muted">تصویر محصول</span>
+                    <span class="info-box-number text-center text-muted mb-0">
+                        <img src="{{object.image.url}}" alt="{{object.title}}" class=" img-size-50 mr-2"></span>
+                  </div>
+                </div>
+              </div>
+          </div>
+         
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
 
 {% endblock %}

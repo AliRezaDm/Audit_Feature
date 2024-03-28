@@ -3,7 +3,9 @@
 {% block content %}
 
 <h2 style="padding-right:25px; padding-bottom: 25px;">لیست محصولات</h2>
-<!-- small containers -->
+
+{% comment %} 
+<!--small containers -->
 <div class="container-fluid">
   <div class="row">
     {% for object in object_list%}  
@@ -28,7 +30,9 @@
     {% endfor %}  
     
   </div>
-</div>
+</div> {% endcomment %}
+ 
+
 
 <!-- Big containers -->
 <div class="container-fluid">
@@ -45,12 +49,14 @@
         <div class="icon">
           <i class="ion ion-bag"></i>
         </div>
-        <a href="#" class="small-box-footer">نمایش بیشتر <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{% url 'goods:supply_detail' object.id %}" class="small-box-footer">نمایش بیشتر <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
   {% endfor %}
   </div>
 </div>
+
+
 
 <!-- Table -->
 <div class="card">
@@ -72,6 +78,8 @@
           <th>تصویر محصول</th>
           <th>شناسه محصول</th>
           <th>نام محصول</th>
+          <th> رنگ محصول</th>
+          <th>اندازه محصول</th>
           <th>تعداد</th>
         </tr>
         </thead>
@@ -85,6 +93,12 @@
           <td>{{object.id}}</td>
           <td>
             {{object.title}}
+          </td>
+          <td>
+            {{object.color}}
+          </td>
+          <td>
+            {{object.size}}
           </td>
           <td>
            {{object.count}}
