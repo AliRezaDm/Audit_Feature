@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import html 
+from django.urls import reverse
 
 #Managers
 class SupplyManager(models.Manager):
@@ -67,6 +68,10 @@ class Supply(models.Model):
     def sizes_to_str(self):
         return " - ".join([size.name for size in self.sizes.all()])
     sizes_to_str.short_description = 'اندازه ها'
+
+    def get_absolute_url(self):
+        return reverse("goods:supply_list")
+    
 
 
 class Color(models.Model):
