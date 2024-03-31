@@ -1,11 +1,13 @@
 from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
+from django.db.models import Q
+from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Supply, Category, Size, Color
-
+from .forms import SearchForm
 
 
 
@@ -55,3 +57,16 @@ class ColorCreateView(CreateView):
     model = Color
     fields = ['name']
     template_name = "goods/add_color_form.html"
+
+
+@require_POST
+def search_view(request):
+    
+    supply_query =Supply.objects.Available()
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            data = search_form.cleaned_data['search']
+            supply = supply_query.filter(Q(title__icontains = data) | Q(description__icontains = data))
+            
+            return render(request, 'goods/supply_list.html', {"Supply": supply, "search_form": search_form})
