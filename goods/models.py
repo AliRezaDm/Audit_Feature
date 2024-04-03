@@ -39,10 +39,11 @@ class Supply(models.Model):
     image = models.ImageField(verbose_name='تصویر محصول', upload_to='media', null=True)
     category = models.ManyToManyField(Category, verbose_name='دسته بندی', related_name='cat')
     title = models.CharField(max_length=100, verbose_name='نام محصول')
-    color = models.ManyToManyField('Color' ,related_name='goods', verbose_name='رنگ', null=True, blank=True)
-    size = models.ManyToManyField('Size', related_name='goods', verbose_name='اندازه', null=True, blank=True)
+    color = models.ManyToManyField('Color' ,related_name='goods', verbose_name='رنگ')
+    size = models.ManyToManyField('Size', related_name='goods', verbose_name='اندازه')
     status = models.CharField(max_length=1, verbose_name='وضعیت محصول', choices=STATUS_CHOICE)
     count = models.IntegerField(verbose_name='تعداد')
+    description = models.TextField(verbose_name="توضیحی درباره محصول", blank=True, null=True)
 
     #initializing the manager
     objects = SupplyManager()
