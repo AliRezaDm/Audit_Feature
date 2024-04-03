@@ -1,0 +1,31 @@
+{% extends "goods/base.html" %}
+{% load static %}
+{% block content %}
+
+<h2 style="padding-right:25px; padding-bottom: 25px;">لیست محصولات</h2>
+
+<!-- Big containers -->
+<div class="container-fluid">
+  <div class="row">
+    {% for supply in Supply%}
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{supply.count}}</h3>
+
+          <p>{{supply.title}}</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a href="{% url 'goods:supply_detail' supply.id %}" class="small-box-footer">نمایش بیشتر <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock %}
