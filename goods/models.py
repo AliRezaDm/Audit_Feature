@@ -25,7 +25,9 @@ class Category(models.Model):
 
     def __str__(self):
          return self.title
-
+    
+    def get_absolute_url(self):
+        return reverse("goods:category_list")
 
 class Supply(models.Model):
 
@@ -87,6 +89,8 @@ class Color(models.Model):
         verbose_name = 'رنگ'
         verbose_name_plural = 'رنگ ها'
 
+    def get_absolute_url(self):
+        return reverse("goods:supply_list")
 
 class Size(models.Model):
     
@@ -99,3 +103,6 @@ class Size(models.Model):
         
         verbose_name = 'اندازه'
         verbose_name_plural = 'اندازه ها'
+
+    def get_absolute_url(self):
+        return reverse("goods:supply_list")
