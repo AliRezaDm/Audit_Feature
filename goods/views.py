@@ -32,6 +32,12 @@ class SupplyCreateView(CreateView):
     fields = ['title', 'category', 'count', 'image', 'color', 'size']
     template_name = 'goods/add_supply_form.html'
 
+class SupplyUpdateView(UpdateView):
+
+    model = Supply
+    fields = ['title', 'category', 'count', 'image', 'color', 'size']
+    template_name = 'goods/add_supply_form.html'
+
 
 class CategoryList(ListView):
 
@@ -45,13 +51,31 @@ class CategoryCreateView(CreateView):
     fields = ['parent', 'title', 'status']
     template_name = "goods/add_category_form.html"
 
+class CategoryUpdateView(UpdateView):
+
+    model = Category
+    fields = ['parent', 'title', 'status']
+    template_name = "goods/add_category_form.html"
+
 class SizeCreateView(CreateView):
 
     model = Size
     fields = ['name']
     template_name = "goods/add_size_form.html"
 
+class SizeUpdateView(UpdateView):
+
+    model = Size
+    fields = ['name']
+    template_name = "goods/add_size_form.html"
+
 class ColorCreateView(CreateView):
+
+    model = Color
+    fields = ['name']
+    template_name = "goods/add_color_form.html"
+
+class ColorUpdateView(UpdateView):
 
     model = Color
     fields = ['name']

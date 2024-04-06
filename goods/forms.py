@@ -5,7 +5,7 @@ class SupplyAddForm(forms.ModelForm):
 
     class Meta:
         model = Supply
-        fields = ['id', 'image', 'category', 'title', 'color', 'size', 'status', 'count', 'description']
+        fields = ['id', 'image', 'category', 'title', 'color_to_str', 'size_to_str', 'status', 'count', 'description']
 
         
 class CategoryAddForm(forms.ModelForm):
