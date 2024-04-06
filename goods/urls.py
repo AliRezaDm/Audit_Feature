@@ -17,9 +17,11 @@ urlpatterns = [
     path('category/', CategoryList.as_view(), name='category_list'),
     path('detail/<id>', SupplyDetail.as_view(), name='supply_detail'), 
     path('create_supply/', SupplyCreateView.as_view(), name='supply_create'), 
+    path('update_supply/<id>', SupplyCreateView.as_view(), name='supply_update'), 
     path('create_category/', CategoryCreateView.as_view(), name='category_create' ), 
     path('create_color/', ColorCreateView.as_view(), name='color_create' ),
     path('create_size/', SizeCreateView.as_view(), name='size_create' ), 
     path ('search/', search_view, name='search'), 
 ]
 
+    

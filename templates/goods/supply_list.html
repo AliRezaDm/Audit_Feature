@@ -103,6 +103,11 @@
           <td>
            {{object.count}}
           </td>
+          <td>
+            <a  class="btn btn-warning" href="{% url 'goods:supply_update' object.id %}">
+              ویرایش
+            </a>
+          </td>
         </tr>
        {% endfor %}
         </tbody>
