@@ -10,8 +10,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #all auth
     path('', include('allauth.urls')),
-    
-    path('', include('goods.urls'))
+    # My models 
+    path('', include('goods.urls')), 
+    path('cart', include('cart.urls'))
 ]
 
 
