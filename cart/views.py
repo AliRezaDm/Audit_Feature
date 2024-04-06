@@ -14,8 +14,8 @@ class CartDetail(DetailView):
 def cart_add(request, product_id):
 
     item = Cart.objects.filter(user=request.user, product=product_id).first()
-
-    if Supply.objects.get('count') == 0 :
+    supplies = Supply.objects.get(id=product_id)
+    if  supplies.count == 0:
         messages.error(request, 'موجودی محصول کافی نیست')
         return redirect('cart:cart_detail')
 
@@ -34,7 +34,7 @@ def cart_add(request, product_id):
 def cart_remove(request, item_id):
 
     item = get_object_or_404(Cart, id = item_id)
-
+    
     if item.user == request.user:
         item.delete()
         messages.success(request,'محصول از سبد خرید حذف شد')

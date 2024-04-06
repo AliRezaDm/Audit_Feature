@@ -38,11 +38,19 @@ class SupplyUpdateView(UpdateView):
     model = Supply
     fields = ['title', 'category', 'count', 'image', 'color', 'size']
     template_name = 'goods/add_supply_form.html'
+    
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Supply.objects.Available(), pk=id)
 
 class SupplyDeleteView(DeleteView):
 
     model = Supply
     success_url = reverse_lazy('goods:supply_list')
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Supply.objects.Available(), pk=id)
 
 #---------------------------------------------------------------------------------
 # Category view -> CreateView, UpdateView, DeleteVeiw, ListView
