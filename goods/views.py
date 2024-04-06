@@ -11,7 +11,7 @@ from .models import Supply, Category, Size, Color
 
 
 
-
+# Supply view -> CreateView, UpdateView, DeleteVeiw, ListView, DetailView
 class Supplylist(ListView):
 
     model = Supply
@@ -44,13 +44,13 @@ class SupplyDeleteView(DeleteView):
     model = Supply
     success_url = reverse_lazy('goods:supply_list')
 
+#---------------------------------------------------------------------------------
+# Category view -> CreateView, UpdateView, DeleteVeiw, ListView
 class CategoryList(ListView):
 
     model = Category
     queryset = Category.objects.filter(status=True)
     template_name = "goods/category_list"
-
-  
 
 class CategoryCreateView(CreateView):
 
@@ -64,6 +64,13 @@ class CategoryUpdateView(UpdateView):
     fields = ['parent', 'title', 'status']
     template_name = "goods/add_category_form.html"
 
+class CategoryDeleteView(DeleteView):
+
+    model = Category
+    success_url = reverse_lazy('goods:category_list')
+
+#---------------------------------------------------------------------------------
+# Size view -> CreateView, UpdateView
 class SizeCreateView(CreateView):
 
     model = Size
@@ -76,6 +83,8 @@ class SizeUpdateView(UpdateView):
     fields = ['name']
     template_name = "goods/add_size_form.html"
 
+#---------------------------------------------------------------------------------
+# Color view -> CreateView, UpdateView
 class ColorCreateView(CreateView):
 
     model = Color
@@ -87,11 +96,14 @@ class ColorUpdateView(UpdateView):
     model = Color
     fields = ['name']
     template_name = "goods/add_color_form.html"
-
-
+#---------------------------------------------------------------------------------
+# SearchView
 @require_POST
 def search_view(request):
-    
+    """
+    this view gets search phrase from input in template named query via method POST
+    and checks if there is match in Category.title
+    """
     supply_query =Supply.objects.Available()
     if request.method == "POST":
         search = request.POST.get('query')
