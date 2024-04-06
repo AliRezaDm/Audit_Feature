@@ -70,7 +70,7 @@ class CategoryDeleteView(DeleteView):
     success_url = reverse_lazy('goods:category_list')
 
 #---------------------------------------------------------------------------------
-# Size view -> CreateView, UpdateView
+# Size view -> CreateView, UpdateView, ListView
 class SizeCreateView(CreateView):
 
     model = Size
@@ -83,8 +83,14 @@ class SizeUpdateView(UpdateView):
     fields = ['name']
     template_name = "goods/add_size_form.html"
 
+class SizeListView(ListView):
+    
+    model = Size
+    template_name = 'goods/size_list.html'
+    queryset = Size.objects.all()
+    
 #---------------------------------------------------------------------------------
-# Color view -> CreateView, UpdateView
+# Color view -> CreateView, UpdateView, ListView
 class ColorCreateView(CreateView):
 
     model = Color
@@ -96,6 +102,13 @@ class ColorUpdateView(UpdateView):
     model = Color
     fields = ['name']
     template_name = "goods/add_color_form.html"
+
+class ColorListView(ListView):
+    
+    model = Color
+    template_name = 'goods/color_list.html'
+    queryset = Color.objects.all()
+
 #---------------------------------------------------------------------------------
 # SearchView
 @require_POST

@@ -1,0 +1,46 @@
+{% extends "goods/base.html" %}
+{% load static%}
+{% block content %}
+<style>
+    .col-md-3 {
+        -ms-flex: 0 0 25%;
+        flex: 50 100 800%;
+        max-width: 100%;
+    }
+</style>
+
+<h2 style="padding-right:25px; padding-bottom: 25px;">لیست اندازه ها</h2>
+<div class="row">
+
+    {% for object in object_list%}
+    <div class="col-md-3">
+      <div class="card card-primary">
+        <div class="card-header">
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                </button>
+                <h3 class="card-title">{{object.name}}</h3>
+          </div>
+          <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          {% if object.sizes.all %}
+            {% for i in object.sizes.all %}
+               {{i|linebreaks}}
+            {% endfor %}
+          {% else %}
+            محصولی در این دسته وجود ندارد
+          {% endif %}
+        </div>
+       
+      </div>
+      
+    </div>
+    
+    {% endfor %}
+   
+  </div>
+
+
+{% endblock %}

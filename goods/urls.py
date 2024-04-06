@@ -8,7 +8,9 @@ from .views import (Supplylist,
                     SupplyDeleteView, 
                     CategoryCreateView, 
                     SizeCreateView, 
+                    SizeListView,
                     ColorCreateView, 
+                    ColorListView,
                     search_view
                     )
 
@@ -28,9 +30,11 @@ urlpatterns = [
 
     # Color Urls
     path('create_color/', ColorCreateView.as_view(), name='color_create' ),
+    path('color_list/', ColorListView.as_view(), name='color_list' ),
 
     # Size Urls
     path('create_size/', SizeCreateView.as_view(), name='size_create' ), 
+    path('size_list/', SizeListView.as_view(), name='size_list' ), 
 
     # Search Url
     path ('search/', search_view, name='search'), 
