@@ -87,9 +87,14 @@
                     <span class="info-box-number text-center text-muted mb-0">
                         <img src="{{object.image.url}}" alt="{{object.title}}" class=" img-size-50 mr-2"></span>
                   </div>
-                </div>
+                </div class="col-12 col-sm-12`">
                 <a  class="btn btn-warning" href="{% url 'goods:supply_update' object.id %}">
                   ویرایش
+                </a>
+              </div>
+                </div class="col-12 col-sm-12`">
+                <a  class="btn btn-danger" href="{% url 'goods:supply_update' object.id %}">
+                  حذف
                 </a>
               </div>
               

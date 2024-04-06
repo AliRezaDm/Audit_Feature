@@ -1,6 +1,7 @@
 from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
+from django.urls import reverse_lazy
 
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
@@ -38,6 +39,10 @@ class SupplyUpdateView(UpdateView):
     fields = ['title', 'category', 'count', 'image', 'color', 'size']
     template_name = 'goods/add_supply_form.html'
 
+class SupplyDeleteView(DeleteView):
+
+    model = Supply
+    success_url = reverse_lazy('goods:supply_list')
 
 class CategoryList(ListView):
 

@@ -108,6 +108,11 @@
               ویرایش
             </a>
           </td>
+          <td>
+            <a  class="btn btn-danger" href="{% url 'goods:supply_update' object.id %}">
+              حذف
+            </a>
+          </td>
         </tr>
        {% endfor %}
         </tbody>
