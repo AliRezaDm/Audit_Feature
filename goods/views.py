@@ -50,6 +50,8 @@ class CategoryList(ListView):
     queryset = Category.objects.filter(status=True)
     template_name = "goods/category_list"
 
+  
+
 class CategoryCreateView(CreateView):
 
     model = Category
