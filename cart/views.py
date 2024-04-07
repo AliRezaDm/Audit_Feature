@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import DetailView
+from django.views.generic import ListView
 from .models import Cart
 from goods.models import Supply
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
-class CartDetail(DetailView):
+class CartListView(ListView):
     
     model = Cart
     template_name = 'cart/cart_detail.html'
@@ -18,7 +18,7 @@ def cart_add(request, product_id):
     if  supplies.count == 0:
         messages.error(request, 'موجودی محصول کافی نیست')
         return redirect('cart:cart_detail')
-
+    
     else:
 
         if item:
