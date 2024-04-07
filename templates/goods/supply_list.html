@@ -104,6 +104,11 @@
            {{object.count}}
           </td>
           <td>
+            <a  class="btn btn-success" href="{% url 'cart:add' object.id %}">
+              افزودن به لیست سفارشات
+            </a>
+          </td>
+          <td>
             <a  class="btn btn-warning" href="{% url 'goods:supply_update' object.id %}">
               ویرایش
             </a>

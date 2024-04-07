@@ -86,17 +86,21 @@
                     <span class="info-box-text text-center text-muted">تصویر محصول</span>
                     <span class="info-box-number text-center text-muted mb-0">
                         <img src="{{object.image.url}}" alt="{{object.title}}" class=" img-size-50 mr-2"></span>
-                  </div>
-                </div class="col-12 col-sm-12`">
+               </div>
+
+               
+              
+                <a  class="btn btn-success" href="{% url 'cart:add' object.id %}">
+                  افزودن به لیست سفارشات
+                </a>
                 <a  class="btn btn-warning" href="{% url 'goods:supply_update' object.id %}">
                   ویرایش
                 </a>
-              </div>
-                </div class="col-12 col-sm-12`">
+             
                 <a  class="btn btn-danger" href="{% url 'goods:supply_update' object.id %}">
                   حذف
                 </a>
-              </div>
+               
               
           </div>
          
