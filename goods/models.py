@@ -58,14 +58,6 @@ class Supply(models.Model):
     def image_tag(self):
          return html.format_html("<img width=100; height=75; style='border-radius:10px;'src='{}'>".format(self.image.url))
     image_tag.short_description = short_decsription = 'تصویر محصول'
-    
-    def colors_to_str(self):
-          return " - ".join([color.name for color in self.colors.all()])
-    colors_to_str.short_description = 'رنگ ها'
-
-    def sizes_to_str(self):
-        return " - ".join([size.name for size in self.sizes.all()])
-    sizes_to_str.short_description = 'اندازه ها'
 
     def get_absolute_url(self):
         return reverse("goods:supply_list")

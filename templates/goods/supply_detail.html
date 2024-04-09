@@ -14,8 +14,6 @@
       </div>
     </div>
   </section>
-
-
 <section class="content" style="float:right;">
 
     <!-- Default box -->
@@ -88,11 +86,11 @@
                         <img src="{{object.image.url}}" alt="{{object.title}}" class=" img-size-50 mr-2"></span>
                </div>
 
-               
-              
-                <a  class="btn btn-success" href="{% url 'cart:add' object.id %}">
-                  افزودن به لیست سفارشات
-                </a>
+               <form method="post" action="{% url 'cart:add_cart' %}">
+                {% csrf_token %}
+                  <input style="display:none;" name="variant_id", value="{{object.id}}">
+                  <input name="quantity" type="number">
+                </form>
                 <a  class="btn btn-warning" href="{% url 'goods:supply_update' object.id %}">
                   ویرایش
                 </a>
@@ -108,6 +106,5 @@
     </div>
     <!-- /.card -->
 
-  </section>
-
+</section>
 {% endblock %}

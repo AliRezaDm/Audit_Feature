@@ -1,43 +1,57 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView
-from .models import Cart
-from goods.models import Supply
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from .models import Cart, CartItem
+from django.views.decorators.http import require_POST
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CartListView(ListView):
+
+
+
+class CartListView(ListView, LoginRequiredMixin):
     
     model = Cart
     template_name = 'cart/cart_detail.html'
 
-def cart_add(request, product_id):
 
-    item = Cart.objects.filter(user=request.user, product=product_id).first()
-    supplies = Supply.objects.get(id=product_id)
-    if  supplies.count == 0:
-        messages.error(request, 'موجودی محصول کافی نیست')
-        return redirect('cart:cart_detail')
-    
+@require_POST
+def add_cart(request):
+
+    url = request.META.get('HTTP_REFERER')
+    variant_id = request.POST.get('variant_id')
+    variant_quantity = request.POST.get('quantity')
+    cart_user = Cart.objects.get(user__id=request.user.id)
+    cart_items = CartItem.objects.get(cart__id=cart_user, variant__id=variant_id)   
+
+    if cart_items:
+        cart_items.quantity += variant_quantity 
+        cart_items.save()
     else:
+        CartItem.objects.create(cart__id=cart_user, variant__id=variant_id, quantity = variant_quantity)
 
-        if item:
-            item.quantity +=1
-            item.save()
-            messages.success(request, 'با موفقیت افزوده شد')
-        else:
-            Cart.objects.create(user=request.user, product=product_id)
-            messages.success(request, 'با موفقیت افزوده شد')
+    return HttpResponseRedirect(url)
 
-    return redirect('cart:cart_detail')
+@require_POST
+def remove_cart(request):
 
-def cart_remove(request, item_id):
+    url = request.META.get('HTTP_REFERER')    
+    variant_id = request.POST.get('variant_id')
+    cart_user = Cart.objects.get(user__id=request.user.id)
+    cart_items = CartItem.objects.get(cart__id=cart_user, variant__id=variant_id)
 
-    item = get_object_or_404(Cart, id = item_id)
+    cart_items.delete()
     
-    if item.user == request.user:
-        item.delete()
-        messages.success(request,'محصول از سبد خرید حذف شد')
-    
-    return redirect('cart:cart_detail')
+    return HttpResponseRedirect(url)
 
+
+def clear_cart(request):  
+    url = request.META.get('HTTP_REFERER')
+    cart_user = Cart.objects.get(user__id=request.user.id)
+    cart_user.delete()
+
+    return HttpResponseRedirect(url)
+    
+
+
+
+    

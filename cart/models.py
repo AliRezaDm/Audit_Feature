@@ -1,21 +1,20 @@
 from django.db import models
-from django.utils import timezone
-from goods.models import Supply
+from goods.models import Variant
 from accounts.models import BaseUser
-
+from django.utils import timezone
 
 class Cart(models.Model):
 
-    user = models.ForeignKey(BaseUser, verbose_name='کاربر', on_delete=models.CASCADE)
-    product = models.ForeignKey(Supply, verbose_name="محصول", on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(verbose_name='تعداد', default=1)
-    create_time = models.DateTimeField(verbose_name='زمان ثبت', default=timezone.now())
-    customer_name = models.CharField(max_length=150, verbose_name='نام مشتری', blank=True, null=True)
+    user = models.ForeignKey(BaseUser, verbose_name=' نام کاربر', on_delete=models.CASCADE, related_name='cart_user')
+    create_at = models.DateTimeField(default=timezone.now())
 
-    def __str__(self):
-        return f"{self.quantity} x {self.product}"
+class CartItem(models.Model):
 
-    # def get_absolute_url(self):
-    #     return reverse("cart:cart_detail")
+    cart = models.ForeignKey(Cart, verbose_name=' لیست', on_delete=models.CASCADE, related_name='cart_items')
+    variant =  models.ForeignKey(Variant, verbose_name='نام محصول', on_delete=models.CASCADE, related_name='cart_supply', unique=True)
+    quantity = models.PositiveIntegerField(verbose_name='تعداد محصول')
+    
 
+
+    
 
