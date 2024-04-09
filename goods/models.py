@@ -109,7 +109,7 @@ class Size(models.Model):
     
 
 
-class Varient(models.Model):
+class Variant(models.Model):
          
     supply=models.ForeignKey(Supply, verbose_name='نام محصول', on_delete=models.CASCADE, related_name='variant_supply')
     color=models.ForeignKey(Color, verbose_name='رنگ محصول', on_delete=models.CASCADE, related_name='variant_color')
