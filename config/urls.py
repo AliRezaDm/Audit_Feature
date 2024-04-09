@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('allauth.urls')),
     # My models 
     path('', include('goods.urls')), 
-    path('cart', include('cart.urls'))
+    path('cart/', include('cart.urls'))
 ]
 
 
