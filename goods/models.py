@@ -36,15 +36,10 @@ class Supply(models.Model):
         ('N', 'ناموجود')
     )   
 
-    
-    id = models.BigAutoField(verbose_name='شناسه محصول', primary_key=True)
     image = models.ImageField(verbose_name='تصویر محصول', upload_to='media', null=True)
     category = models.ManyToManyField(Category, verbose_name='دسته بندی', related_name='cat')
     title = models.CharField(max_length=100, verbose_name='نام محصول')
-    color = models.ManyToManyField('Color' ,related_name='colors', verbose_name='رنگ', default='بدون رنگ')
-    size = models.ManyToManyField('Size', related_name='sizes', verbose_name='اندازه', default='بدون اندازه')
     status = models.CharField(max_length=1, verbose_name='وضعیت محصول', choices=STATUS_CHOICE)
-    count = models.IntegerField(verbose_name='تعداد')
     description = models.TextField(verbose_name="توضیحی درباره محصول", blank=True, null=True)
 
     #initializing the manager
@@ -114,7 +109,7 @@ class Variant(models.Model):
     supply=models.ForeignKey(Supply, verbose_name='نام محصول', on_delete=models.CASCADE, related_name='variant_supply')
     color=models.ForeignKey(Color, verbose_name='رنگ محصول', on_delete=models.CASCADE, related_name='variant_color')
     size=models.ForeignKey(Size, verbose_name='سایز محصول', on_delete=models.CASCADE, related_name='variant_size')
-
+    count=models.PositiveIntegerField(verbose_name='تعداد', default=0)
 
     def __str__(self):
         return self.supply.title 
