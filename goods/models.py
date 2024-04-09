@@ -106,3 +106,18 @@ class Size(models.Model):
 
     def get_absolute_url(self):
         return reverse("goods:supply_list")
+    
+
+
+class Varient(models.Model):
+         
+    supply=models.ForeignKey(Supply, verbose_name='نام محصول', on_delete=models.CASCADE, related_name='variant_supply')
+    color=models.ForeignKey(Color, verbose_name='رنگ محصول', on_delete=models.CASCADE, related_name='variant_color')
+    size=models.ForeignKey(Size, verbose_name='سایز محصول', on_delete=models.CASCADE, related_name='variant_size')
+
+
+    def __str__(self):
+        return self.supply.title 
+
+    def __unicode__(self):
+        return 'supply id: {}'.format(self.supply.id)
